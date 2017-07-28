@@ -1,0 +1,11 @@
+<div id="fb-side">
+    <ul class="fb-tab">
+       	{pc:content action="category" catid="$parentid" siteid="$siteid" order="listorder ASC"}
+		{loop $data $r}		
+		<li  {if $r[catid]==$catid}class="ed"{/if}><a href="{$r[url]}">{$r[catname]}</a></li>		
+		{/loop}
+		{/pc}
+    </ul>
+  </div>
+   <div id="area">
+<div class="subnav">您所在的位置：<a href="index.php">网站首页</a> &gt; <a href="{$CATEGORYS[$CAT[parentid]][url]}">{$CATEGORYS[$CAT[parentid]][catname]}</a> &gt; {$CAT[catname]}</div>

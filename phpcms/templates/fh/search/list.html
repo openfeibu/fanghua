@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-cmn-Hans-CN">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="description" content="{$SEO[description]" />
+<meta name="keywords" content="{$SEO[keywords]" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>搜索结果 | {$SEO['site_title']}</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="{CSS_PATH}fh/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="//ajax.microsoft.com/ajax/jquery/jquery-1.11.3.min.js"></script>
+<script async="async" type="text/javascript" src="{CSS_PATH}fh/js/chocoslider.js"></script>
+</head>
+<body>
+	{php $data1=$data}
+<div id="header">
+  <div id="logo">{pc:get sql="SELECT * FROM v9_page where catid=53"} {loop $data $key $val} {$val[content]} {/loop} {/pc}</div>
+  <div class="tel">咨询热线：<span>{pc:get sql="SELECT * FROM v9_page where catid=51"} {loop $data $key $val} {$val[content]} {/loop} {/pc}
+</span></div>
+  <div id="searchbox">
+    <form name="search" type="get">
+	   	<input type="hidden" name="m" value="search"/>
+	  	<input type="hidden" name="c" value="index"/>
+	  	<input type="hidden" name="a" value="init"/>
+	  	<input type="hidden" name="typeid" value="1" id="typeid"/>
+	  	<input type="hidden" name="siteid" value="{$siteid}" id="siteid"/>
+     	<input name="q" type="text" id="skey" class="searcha" placeholder="输入关键词……"  {if $_GET['q']}value="<?php echo $_GET['q']; ?>"{/if}>
+      	<input id="sbtn" type="submit" class="searchb" value="">
+    </form>
+    <script type="text/javascript">
+	$(function(){
+		
+		$(".searchb").click(function(){
+			var keywork=$.trim($(".searcha").val());
+			if(keywork==""){
+				alert("请输入关键字");
+				return false;
+			}
+			$("form").submit();
+		});
+	});
+</script>
+{if $setting['suggestenable']}
+<script type="text/javascript" src="{JS_PATH}jquery.suggest.js"></script>
+<script type="text/javascript" src="{JS_PATH}search_suggest.js"></script>
+{/if}
+  </div>
+</div>
+<div id="navbg">
+  <ul id="nav">
+    <li {if !$catid } id="navc" {/if} ><a href="index.php">网站首页</a></li>
+    
+    {pc:content action="category" catid="9" num="8" siteid="$siteid" order="listorder ASC"}
+	{loop $data $cid $r}
+	<li {if $r[catid]==$CATEGORYS[$CAT[parentid]][catid] || $r[catid]==$catid} id="navc" {/if} ><a href="{$r[url]}">{$r[catname]}</a>
+	<ol>
+	{pc:content action="category" catid="$cid" num="6" order="listorder ASC"}
+	{loop $data $v}
+	<li><a href="{$v[url]}">{$v[catname]}</a></li>
+	{/loop}{/pc}
+	</ol>
+    </li>
+	{/loop}{/pc}
+  </ul>
+</div>
+
+<div id="banner">
+  <h1 class="bsearch">搜索结果</h1>
+</div>
+<div id="main">
+  	<div id="side">
+    <ul class="tab">
+       	 <li class="ed"><a href="#">搜索结果</a></li>
+    </ul>
+  </div>
+   <div id="area">
+	   <div class="subnav">您所在的位置：<a href="index.php">网站首页</a> &gt; 站内搜索</div>
+ 	<div class="news_type">
+	        <ul class="list_news">
+				{loop $data1 $i $r}	
+					<li><font  class="font">·</font><a href="{$r[url]}" target="_blank" title="{$r[title]}">{$r[title]}</a><span class="date">[{date('Y-m-d',$r[inputtime])}]</span></li>
+				{/loop}
+			</ul>
+            <div id="pages" class="text-c mg_t20">{$pages}</div>
+    </div>
+  </div>
+</div>
+{template "content","footer"}

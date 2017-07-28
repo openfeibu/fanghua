@@ -1,0 +1,19 @@
+{template "content_m","header"}
+<body>
+	<article class='main'>
+		<section class='top-bg lv'>
+			<h2>{$CATEGORYS[$CAT[parentid]][catname]}</h2>
+			<p>{$CATEGORYS[$CAT[parentid]][catdir]}</p>
+		</section>
+		<article class='xq'>
+			<h2>{$title}</h2>
+		<!--	<p class='plo'>CEO</p>-->
+			<section class='test team_test'>
+				{$content}				
+			</section>
+		</article>
+
+		
+	</article>
+{template "content_m","footer"}
+						

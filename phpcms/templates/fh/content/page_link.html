@@ -1,0 +1,28 @@
+{if $parentid==9}
+{pc:content action="category" siteid="1" catid="$catid" num="1"}
+{loop $data $n $r}
+{php header('location:'.$r['url'].'');}
+{/loop}{/pc}
+{/if}
+{template "content","header"}
+<div id="banner">
+  <h1 class="b{$CATEGORYS[$CAT[parentid]][catdir]}">{$CATEGORYS[$CAT[parentid]][catname]}</h1>
+</div>
+<div id="main">
+  	{template "content","left"}
+ 	<h2>{$catname}</h2>
+    {pc:link action="type_lists" listorder="desc" siteid="$siteid"}  
+    {loop $data $type_v}  
+       <h3>{$type_v[name]}</h3><div class="lbox">
+       {pc:link action="type_list" siteid="$siteid" typeid="$type_v[typeid]" order="listorder DESC" return="dat"}
+       {loop $dat $v} 
+       <a href="{$v['url']}">{$v['name']}</a>
+       {/loop}
+       {/pc}
+	   <div class="clearfix"></div>
+       </div>
+    {/loop}
+    {/pc}
+  </div>
+</div>
+{template "content","footer"}

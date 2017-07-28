@@ -1,0 +1,29 @@
+{if $parentid==9}
+{pc:content action="category" siteid="1" catid="$catid" num="1"}
+{loop $data $n $r}
+{php header('location:'.$r['url'].'');}
+{/loop}{/pc}
+{/if}
+{template "content","header"}
+<div id="banner">
+  <h1 class="b{$CATEGORYS[$CAT[parentid]][catdir]}">{$CATEGORYS[$CAT[parentid]][catname]}</h1>
+</div>
+<div id="main">
+  	{template "content","left"}
+ 	{if $catid==33}
+ 	 <ul class="servicelist">
+	 	{pc:content action="category" catid="$parentid" siteid="$siteid" order="listorder ASC"}
+		{loop $data $r}	
+		{if $r[catid]!=33}	
+		<li><a href="{$r[url]}">{$r[catname]}</a></li>
+		{/if}
+		{/loop}
+		{/pc}
+    </ul>	
+ 	{else}
+    <h2>{$title}</h2>
+   	{$content}
+   	{/if}
+  </div>
+</div>
+{template "content","footer"}

@@ -1,0 +1,14 @@
+<div id="footer">
+  <div><a href="index.php">网站首页</a>{pc:content action="category" catid="9" siteid="$siteid" order="listorder ASC" num="l6"}
+			{loop $data $r}
+			| <a href="{$r[url]}">{$r[catname]}</a>
+			{/loop}
+			{/pc}</div>
+  	{pc:get sql="SELECT * FROM v9_page where catid=50"}
+	{loop $data $key $val}
+	{$val[content]}
+	{/loop}
+	{/pc}
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{if $parentid==9}
+{pc:content action="category" siteid="1" catid="$catid" num="1"}
+{loop $data $n $r}
+{php header('location:'.$r['url'].'');}
+{/loop}{/pc}
+{/if}
+{template "content","header"}
+<div id="banner">
+  <h1 class="b{$CATEGORYS[$CAT[parentid]][catdir]}">{$CATEGORYS[$CAT[parentid]][catname]}</h1>
+</div>
+<div id="main">
+  <div id="side">
+    <ul class="tab">
+       	{pc:content action="category" catid="$parentid" siteid="$siteid" order="listorder ASC"}
+		{loop $data $r}		
+		<li  {if $r[catid]==$catid}class="ed"{/if}><a href="{$r[url]}">{$r[catname]}</a></li>		
+		{/loop}
+		{/pc}
+    </ul>
+  </div>
+   <div id="area">
+<div class="subnav">您所在的位置：<a href="index.php">网站首页</a> &gt; <a href="{$CATEGORYS[$CAT[parentid]][url]}">{$CATEGORYS[$CAT[parentid]][catname]}</a> &gt; {$CAT[catname]}</div>
+ 
+    <h2>{$title}</h2>
+   	{$content}
+  </div>
+</div>
+{template "content","footer"}

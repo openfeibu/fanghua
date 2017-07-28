@@ -1,0 +1,117 @@
+{template "content","header"}
+<script>var uaTest = /Android|webOS|Windows Phone|iPhone|ucweb|ucbrowser|iPod|BlackBerry/i.test(navigator.userAgent.toLowerCase());var touchTest = 'ontouchend' in document;if(uaTest && touchTest){window.location.href ='http://m.fanghualawyer.com';}</script>
+<div id="banner">
+  <div id="slider">
+	  	{pc:content action="lists" catid="52" order="id ASC" num="4"}
+	    {loop $data $key $val}
+	     <a href="{$val[url]}"><img src="{$val[thumb]}" alt="{$val[title]}" title=""/></a>
+	    {/loop}
+	    {/pc}
+  </div>
+</div>
+<div id="fb-main" class="home">
+  <div id="fb-side1">
+
+ <div id="title">
+    <h4>关于我们<span>/ About Us</span></h4>
+</div>
+   <div id="side1">  
+    <img src="{CSS_PATH}fh/img/slider1.jpg" width="100%" alt="关于我们"/>
+    {pc:get sql="SELECT * FROM v9_page where catid=27"}
+	{loop $data $key $val}
+	<P>{str_cut(strip_tags($val[content]),422,"")}......</P>
+	{/loop}
+	{/pc}
+
+   <div class="more"></br><a href="index.php?m=content&c=index&a=lists&catid=27">More</a></div>
+	</div>
+
+ <div id="title">
+  <h4>芳华动态<span>/ Recent News</span></h4>
+</div>
+   <div id="side1">
+    <ul>
+    {pc:content action="lists" catid="22" order="id DESC" page="$page" moreinfo="1" num="8"}
+	{loop $data $n $r}
+	<li><a href="{$r['url']}" title="{$r['title']}">{$r[title]}</a></li>
+	{/loop}{/pc}
+    </ul>
+
+    <div class="more"></br><a href="index.php?m=content&c=index&a=lists&catid=27">More</a></div>
+  </div>
+	
+  <div id="title">
+   <h4>联系我们<span>/ Contact Us</span></h4>
+</div>
+   <div id="side3">
+        {pc:get sql="SELECT * FROM v9_page where catid=41"}
+		{loop $data $key $val}		
+        {$val[content]}
+		{/loop}
+		{/pc} 
+
+<div class="more"></br><a href="index.php?m=content&c=index&a=lists&catid=27">More</a></div>
+  </div>
+  </div>
+
+  <div id="case">
+    <h4>典型案例<span>Project And Case</span></h4>
+    <div class="more"><span>...........................................................</span><a href="index.php?m=content&c=index&a=lists&catid=40">More</a></div>
+     
+    <dl class="newlist">
+	{pc:content action="lists" catid="40" order="id DESC" page="$page" moreinfo="1" num="10"}
+	{loop $data $n $r}
+
+		<dt><a href="{$r['url']}">{str_cut(strip_tags($r[title]),80,"...")}</a></dt>
+      	<dd>{date('Y-m-d',$r[inputtime])}</dd>
+	{/loop}
+	{/pc}
+    </dl>
+    <ul class="piclink">
+      <li><a href="index.php?m=content&c=index&a=lists&catid=30">律师团队</a></li>
+      <li><a href="index.php?m=content&c=index&a=lists&catid=60">专业领域</a></li>
+      <li><a href="index.php?m=content&c=index&a=lists&catid=25">联系我们</a></li>
+      <li><a href="index.php?m=content&c=index&a=lists&catid=25">联系我们</a></li>
+    </ul>
+    <div class="subleft">
+      <h4>最新法规<span>Laws Update</span></h4>
+      <div class="more"><span>...............</span><a href="index.php?m=content&c=index&a=lists&catid=23">More</a></div>
+      <ol>
+    {pc:content action="lists" catid="23" order="id DESC" page="$page" moreinfo="1" num="8"}
+	{loop $data $n $r}
+      	<li><a href="{$r['url']}">{$r[title]}</a></li>
+	{/loop}
+	{/pc}
+      </ol>
+    </div>
+    <div class="subright">
+      <h4>劳动法规<span>Labour Laws</span></h4>
+      <div class="more"><span>.................</span><a href="index.php?m=content&c=index&a=lists&catid=47">More</a></div>
+      <ol>
+      {pc:content action="lists" catid="47" order="id DESC" page="$page" moreinfo="1" num="8"}
+	{loop $data $n $r}
+      	<li><a href="{$r['url']}">{$r[title]}</a></li>
+	{/loop}
+	{/pc}
+      </ol>
+    </div>
+    <h4>友情链接<span>Links</span></h4>
+    <div class="more"><span>......................................................................</span><a href="index.php?m=content&c=index&a=lists&catid=26">More</a></div>
+    <dl class="linklist">
+	    {pc:link action="type_lists" listorder="desc" siteid="$siteid"}  
+        {loop $data $type_v}  
+           <dt>{$type_v[name]}</dt><dd>
+           {pc:link action="type_list" siteid="$siteid" typeid="$type_v[typeid]" order="listorder DESC" return="dat"}
+           {loop $dat $v} 
+           <a href="{$v['url']}">{$v['name']}</a>
+           {/loop}
+           {/pc}
+           </dd>
+        {/loop}
+        {/pc}
+    </dl>
+  </div>
+</div>
+<script type="text/javascript" src="//ajax.microsoft.com/ajax/jquery/jquery-1.11.3.min.js"></script>
+<script async="async" type="text/javascript" src="{CSS_PATH}fh/js/chocoslider.js"></script>
+{template "content","footer"}

@@ -1,0 +1,10 @@
+{if $parentid==9}
+{pc:content action="category" siteid="1" catid="$catid" num="1"}
+{loop $data $n $r}
+{if $catid=11}
+{php header('location:index.php?m=content&c=index&a=lists&catid=62')}
+{else}
+{php header('location:'.$r['url'].'');}
+{/if}
+{/loop}{/pc}
+{/if}

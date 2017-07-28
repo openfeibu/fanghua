@@ -1,0 +1,120 @@
+{if $parentid==9}
+{pc:content action="category" siteid="1" catid="$catid" num="1"}
+{loop $data $n $r}
+{php header('location:'.$r['url'].'');}
+{/loop}{/pc}
+{/if}
+{template "content","header"}
+<div id="banner">
+  <h1 class="b{$CATEGORYS[$CAT[parentid]][catdir]}">{$CATEGORYS[$CAT[parentid]][catname]}</h1>
+</div>
+<div id="main">
+  	{template "content","left"}
+ 	<h2>{$catname}</h2>
+    <div class="subleft contact">	
+	   	{pc:get sql="SELECT * FROM v9_page where catid=41"}
+		{loop $data $key $val}
+		<h3>{$val[title]}</h3>
+
+        	{$val[content]}
+
+		{/loop}
+		{/pc}   
+    </div>
+    <div class="subright contact">
+      	{pc:get sql="SELECT * FROM v9_page where catid=42"}
+		{loop $data $key $val}
+		<h3>{$val[title]}</h3>
+
+        	{$val[content]}
+
+		{/loop}
+		{/pc} 
+    </div>
+    <div class="subleft contact">
+      	{pc:get sql="SELECT * FROM v9_page where catid=43"}
+		{loop $data $key $val}
+		<h3>{$val[title]}</h3>
+
+        	{$val[content]}
+
+		{/loop}
+		{/pc} 
+    </div>
+    <!--<div class="subright contact">
+      <h3>示例内容</h3>
+      <dl>
+        <dt>示例内容</dt>
+        <dd>www.aaa.com</dd>
+      </dl>
+    </div>-->
+    <div id="map">	
+      	{pc:get sql="SELECT * FROM v9_page where catid=44"}
+		{loop $data $key $val}
+		{$val[content]}
+		{/loop}
+		{/pc}
+      <div id="mapbox">
+      </div>
+	  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=E3a31095f675532dffe9ea6c88f28fad"></script>
+	  <script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+      addMapControl();//向地图添加控件
+      addMapOverlay();//向地图添加覆盖物
+    }
+    function createMap(){ 
+      map = new BMap.Map("mapbox"); 
+      map.centerAndZoom(new BMap.Point(113.388895,23.104718),17);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    function addMapOverlay(){
+      var markers = [
+        {content:"广东省广州市海珠区琶洲新村蟠龙新街3号11栋1501室",title:"广东芳华律师事务所",imageOffset: {width:-46,height:-21},position:{lat:23.104813,lng:113.388913}}
+      ];
+      for(var index = 0; index < markers.length; index++ ){
+        var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+        var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+          imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+        })});
+        var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+        var opts = {
+          width: 200,
+          title: markers[index].title,
+          enableMessage: false
+        };
+        var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+        marker.setLabel(label);
+        addClickHandler(marker,infoWindow);
+        map.addOverlay(marker);
+      };
+    }
+    //向地图添加控件
+    function addMapControl(){
+      var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+      map.addControl(scaleControl);
+      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:0});
+      map.addControl(navControl);
+      var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+      map.addControl(overviewControl);
+    }
+    var map;
+      initMap();
+  </script>
+    </div>
+  </div>
+</div>
+{template "content","footer"}

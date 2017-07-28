@@ -1,0 +1,155 @@
+body{overflow: hidden;}
+.hide{display: none;}
+
+/*clear float*/
+.clearfix:after {content:"\200B"; display:block; height:0; clear:both; }
+.clearfix { *zoom:1; }
+
+/*all element animation*/
+*{transition: all .3s linear; -webkit-transition: all .3s linear; -moz-transition: all .3s linear; -ms-transition: all .3s linear; -o-transition: all .3s linear;}
+
+header{width: 1002px; height: 88px; padding: 28px 0 5px 0; margin: 0 auto;}
+#login{width: 156px; height: 44px; overflow: hidden; margin-left: 60px;}
+nav ul li{ float: left;}
+nav ul li a{display: block; padding: 0 5px; margin: 0 5px; color: #706c6c; font-size: 14px; text-decoration: none;margin-top: 30px;}
+header .text{color: #706c6c; font-size: 14px; margin-left: 40px; margin-top: 30px;}
+
+section{width: 1000px; height: 712px; margin: 0 auto; position: relative; overflow: hidden;background: url(../img/admlogo.png) no-repeat 100px 220px;}
+#login{width: 572px; height: 373px; background: url(../images/login-bg.png) no-repeat; float: right; margin-top: 123px; position: relative;z-index: 4;}
+#login .input-area{ margin: 0 0 10px 100px; position: relative; }
+#login h3{text-align: center; color: #fff; font-size: 26px; padding: 24px 0;}
+.input-area label{display: inline-block; width: 66px; text-align: right; float: left; color: #fff; height: 38px; line-height: 38px; font-size: 14px;}
+.input-area .input-text{width: 290px; height: 38px; line-height: 38px; text-indent: 12px; /*color: #cacaca;*/border: 1px solid #0b8ee0; float: left; box-shadow: 0 0 5px 0px rgba(233,243,249,.75);}
+.input-area .code{width: 87px; height: 32px; margin-top: 4px; float: left; margin-left: 15px;}
+.input-area .input-sub{width: 134px; height: 40px; text-align: center;border: 1px solid #0b8ee0;box-shadow: 0 0 3px 1px rgba(233,243,249,.75); cursor: pointer; border-radius: 5px; background: #119af3; color: #fff; font-size: 16px; margin: 25px 0 0 56px;}
+.input-area .input-sub:hover{box-shadow: 0 0 5px 2px rgba(233,243,249,.75); background: #0f87d6;}
+.input-area a{display: inline-block; color: #fff; font-size: 12px; margin: 20px 0 0 15px;}
+.input-area a:hover{text-decoration: underline;}
+.input-area input:focus{border-color: #075e94; box-shadow: 0 0 8px 3px rgba(233,243,249,.75);}
+section .cloud{ width: 441px; height: 178px; background: url(../images/cloud.png) no-repeat; position: absolute; top: 43px; left: 5px; z-index: 2;}
+section .text{ width: 280px; height: 95px; background: url(../images/text.png) no-repeat; position: absolute; top: 72px; left: 105px; z-index: 3;}
+section .text a{ background: url(../images/apply-icon.png) no-repeat; width: 73px; height: 25px; display: block; float: right; margin-top: 75px; margin-right: 55px;}
+section .text a:hover{opacity: .7;}
+section .phone{ width: 193px; height: 236px; background: url(../images/phone.png) no-repeat; position: absolute; top: 213px; left: 120px; z-index: 3;}
+section .ship{ width: 384px; height: 157px; background: url(../images/ship.png) no-repeat; position: absolute; top: 330px; left: 32px; z-index: 2;}
+section .mountain{width: 1022px; height: 157px; background: url(../images/mountain.png) no-repeat; position: absolute; top: 558px; left: -10px; z-index: -1;}
+section .opacity{opacity: 0;}
+
+footer{width: 100%; height: 104px; border-top: 2px solid #878585; background: #fff;}
+#footer{ width: 1002px; margin: 0 auto; text-align: center; height: 104px; line-height: 104px;}
+#footer a{display: inline-block; color: #000; margin: 0 8px;}
+#footer a:hover{color: #008be4;}
+
+/*
+ * 
+ *   animation
+ * 
+ */
+/*cloud-animation*/
+.cloud-animation{animation: cloud 1s ease-in-out;-webkit-animation: cloud 1s ease-in-out;-moz-animation: cloud 1s ease-in-out;-o-animation: cloud 1s ease-in-out; -ms-animation: cloud 1s ease-in-out;}
+@keyframes cloud{
+	0%{transform: translateY(100%);opacity: 0;}
+	40%{transform: translateY(-10%);opacity: 1;}
+	60%{transform: translateY(10%);opacity: 1;}
+	100%{transform: translateY(0);opacity: 1;}
+}
+@-webkit-keyframes cloud{
+	0%{-webkit-transform: translateY(100%);opacity: 0;}
+	40%{-webkit-transform: translateY(-10%);opacity: 1;}
+	60%{-webkit-transform: translateY(10%);opacity: 1;}
+	100%{-webkit-transform: translateY(0);opacity: 1;}
+}
+
+/*text-animation*/
+.text-animation{animation: text 1.5s ease-in-out;-webkit-animation: text 1.5s ease-in-out;-moz-animation: text 1.5s ease-in-out;-o-animation: text 1.5s ease-in-out; -ms-animation: text 1.5s ease-in-out;}
+@keyframes text{
+	0%{transform: translateY(-100%);opacity: 0;}
+	40%{transform: translateY(10%);opacity: 1;}
+	60%{transform: translateY(-10%);opacity: 1;}
+	100%{transform: translateY(0);opacity: 1;}
+}
+@-webkit-keyframes text{
+	0%{-webkit-transform: translateY(-100%);opacity: 0;}
+	40%{-webkit-transform: translateY(10%);opacity: 1;}
+	60%{-webkit-transform: translateY(-10%);opacity: 1;}
+	100%{-webkit-transform: translateY(0);opacity: 1;}
+}
+
+/*mountain-animation*/
+.mountain-animation{animation: mountain .5s ease-in-out;-webkit-animation: mountain .5s ease-in-out;-moz-animation: mountain .5s ease-in-out;-o-animation: mountain .5s ease-in-out; -ms-animation: mountain .5s ease-in-out;}
+@keyframes mountain{
+	0%{transform: translateY(120%);opacity: 0;}
+	100%{transform: translateY(0);opacity: 1;}
+}
+@-webkit-keyframes mountain{
+	0%{-webkit-transform: translateY(100%);opacity: 0;}
+	50%{opacity: 0.8;}
+	100%{-webkit-transform: translateY(0);opacity: 1;}
+}
+
+/*phone-animation*/
+.phone-animation{animation: phone 1s ease-in-out;-webkit-animation: phone 1s ease-in-out;-moz-animation: phone 1s ease-in-out;-o-animation: phone 1s ease-in-out; -ms-animation: phone 1s ease-in-out;}
+@keyframes phone{
+	0%{transform: translateX(100%);opacity: 0;}
+	40%{transform: translateX(-10%);opacity: 1;}
+	60%{transform: translateX(10%);opacity: 1;}
+	100%{transform: translateX(0);opacity: 1;}
+}
+@-webkit-keyframes phone{
+	0%{-webkit-transform: translateX(100%);opacity: 0;}
+	40%{-webkit-transform: translateX(-10%);opacity: 1;}
+	60%{-webkit-transform: translateX(10%);opacity: 1;}
+	100%{-webkit-transform: translateX(0);opacity: 1;}
+}
+
+/*ship-animation*/
+.ship-animation{animation: ship 1s ease-in-out;-webkit-animation: ship 1s ease-in-out;-moz-animation: ship 1s ease-in-out;-o-animation: ship 1s ease-in-out; -ms-animation: ship 1s ease-in-out;}
+@keyframes ship{
+	0%{transform: translateX(-100%);opacity: 0;}
+	40%{transform: translateX(10%);opacity: 1;}
+	60%{transform: translateX(-10%);opacity: 1;}
+	100%{transform: translateX(0);opacity: 1;}
+}
+@-webkit-keyframes ship{
+	0%{-webkit-transform: translateX(100%);opacity: 0;}
+	40%{-webkit-transform: translateX(-10%);opacity: 1;}
+	60%{-webkit-transform: translateX(10%);opacity: 1;}
+	100%{-webkit-transform: translateX(0);opacity: 1;}
+}
+
+/*yaosi*/
+.cufz{animation: cufz 1s ease-in-out;}
+@keyframes cufz{
+	0%{transform: scaleX(1);}
+	50%{transform: scaleX(-1);}
+	100%{transform: scaleX(1);}
+}
+@-webkit-keyframes cufz{
+	0%{-webkit-transform: scaleX(1);}
+	50%{-webkit-transform: scaleX(-1);}
+	100%{-webkit-transform: scaleX(1);}
+}
+
+/*login*/
+.login-dh{animation: login-dh 1s ease-in-out;-webkit-animation: login-dh 1s ease-in-out;-moz-animation: login-dh 1s ease-in-out;-o-animation: login-dh 1s ease-in-out; -ms-animation: login-dh 1s ease-in-out;}
+@keyframes login-dh{
+	0%{transform: translateX(200%) skewX(-50deg); }
+	80%{transform: translateX(0) skewX(-10deg);}
+	100%{transform: translateX(0) skewX(0);}
+}
+@-webkit-keyframes login-dh{
+	0%{-webkit-transform: translateX(200%) skewX(-50deg); }
+	80%{-webkit-transform: translateX(0) skewX(-10deg);}
+	100%{-webkit-transform: translateX(0) skewX(0);}
+}
+
+/*header-animation*/
+.header-animation{animation: header-animation 1s ease-in-out;-webkit-animation: header-animation 1s ease-in-out;-moz-animation: header-animation 1s ease-in-out;-o-animation: header-animation 1s ease-in-out; -ms-animation: header-animation 1s ease-in-out;}
+@keyframes header-animation{
+	0%{transform: translateY(-120%); opacity: 0; }
+	100%{transform: translateY(0); opacity: 1;}
+}
+@-webkit-keyframes header-animation{
+	0%{-webkit-transform: translateY(-120%); opacity: 0; }
+	100%{-webkit-transform: translateY(0); opacity: 1;}
+}

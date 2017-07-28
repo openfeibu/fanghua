@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+{template "content_m","header"}
+<body>
+	<article class='main'>
+		<section class='top-bg success-top'>
+			<h2>{$CATEGORYS[$CAT[parentid]][catname]}</h2>
+			<p>{$CATEGORYS[$CAT[parentid]][catdir]}</p>
+		</section>
+		<article class='xq'>
+			<h2>{$title}</h2>
+			<p class='time'>发布时间：{$inputtime}</p>
+			<p class='plo'>来源：{pc:get sql="SELECT copyfrom FROM v9_news_data where id=$id"}
+{loop $data $key $val}
+{php list($copyfrom) = explode('|', $val['copyfrom'])}
+{$copyfrom}
+{/loop}
+{/pc}</p>
+			<section class='test'>
+				{$content}
+			</section>
+		</article>
+
+		
+	</article>
+{template "content_m",footer}
+						

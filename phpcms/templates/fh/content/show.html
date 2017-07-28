@@ -1,0 +1,32 @@
+{template "content","header"}
+<div id="banner">
+  <h1 class="b{$CATEGORYS[$CAT[parentid]][catdir]}">{$CATEGORYS[$CAT[parentid]][catname]}</h1>
+</div>
+<div id="main" >
+	{if $catid==61}
+	<div id="side">
+    <ul class="tab">
+       	<li{if !$id} class="ed"{/if}><a href="index.php?m=content&c=index&a=lists&catid=61">查看所有</a></li>
+       	{pc:content action="lists" catid="$catid" order="id DESC"}
+		{loop $data $r}		
+		<li{if $r[id]==$id} class="ed"{/if}><a href="{$r[url]}">{$r[title]}</a></li>		
+		{/loop}
+		{/pc}
+    </ul>
+  	</div>
+   <div id="area">
+<div class="subnav">您所在的位置：<a href="index.php">网站首页</a> &gt; <a href="{$CATEGORYS[$CAT[parentid]][url]}">{$CATEGORYS[$CAT[parentid]][catname]}</a> &gt; {$title}</div>
+	{else}
+  	{template "content","show_left"} 
+  	{/if}	
+    <h2>{$title}</h2>
+    <h4 class="ch4 {$CATEGORYS[$CAT[parentid]][catdir]}h4">{$inputtime}　来源：{pc:get sql="SELECT copyfrom FROM v9_news_data where id=$id"}
+{loop $data $key $val}
+{php list($copyfrom) = explode('|', $val['copyfrom'])}
+{$copyfrom}
+{/loop}
+{/pc}</h4>
+   	{$content}
+  </div>
+</div>
+{template "content","footer"}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-cmn-Hans-CN">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="description" content="{$SEO[description]" />
+<meta name="keywords" content="{$SEO[keywords]" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{if $catid}{$CATEGORYS[$CAT[parentid]][catname]} | {/if}{$SEO['site_title']}</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="{CSS_PATH}fh/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	{php $data1=$data}
+<div id="header">
+	
+  <!--<div id="logo">{pc:get sql="SELECT * FROM v9_page where catid=53"} {loop $data $key $val} {$val[content]} {/loop} {/pc}</div>-->
+  <div id="logo"><a href="index.php"><p><img src="{CSS_PATH}fh/img/logo.png"></p></a></div>
+  <div class="tel">咨询热线：<span>{pc:get sql="SELECT * FROM v9_page where catid=51"} {loop $data $key $val} {$val[content]} {/loop} {/pc}
+</span></div>
+  <div id="searchbox">
+    <form name="search" type="get">
+	   	<input type="hidden" name="m" value="search"/>
+	  	<input type="hidden" name="c" value="index"/>
+	  	<input type="hidden" name="a" value="init"/>
+	  	<input type="hidden" name="typeid" value="1" id="typeid"/>
+	  	<input type="hidden" name="siteid" value="{$siteid}" id="siteid"/>
+     	<input name="q" type="text" id="skey" class="searcha" placeholder="输入关键词……"  {if $_GET['q']}value="<?php echo $_GET['q']; ?>"{/if}>
+      	<input id="sbtn" type="submit" class="searchb" value="">
+    </form>
+    <div id="log">
+        <ul>
+        	<li><a href="">登录</a></li>
+        	<li><a href="">注册</a></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+	$(function(){
+		
+		$(".searchb").click(function(){
+			var keywork=$.trim($(".searcha").val());
+			if(keywork==""){
+				alert("请输入关键字");
+				return false;
+			}
+			$("form").submit();
+		});
+	});
+</script>
+{if $setting['suggestenable']}
+<script type="text/javascript" src="{JS_PATH}jquery.suggest.js"></script>
+<script type="text/javascript" src="{JS_PATH}search_suggest.js"></script>
+{/if}
+  </div>
+
+</div>
+
+<div id="navbg">
+  <ul id="nav">
+    <li {if !$catid } id="navc" {/if}><a href="index.php">网站首页</a></li>
+    {php $i=1;}
+    {pc:content action="category" catid="9" num="8" siteid="$siteid" order="listorder ASC"}
+	{loop $data $cid $r}
+	
+	<li {if $r[catid]==$CATEGORYS[$CAT[parentid]][catid] || $r[catid]==$catid} id="navc" {/if}  class="li_{$i}"><a href="{$r[url]}">{$r[catname]}</a>
+	<ol>
+	{pc:content action="category" catid="$cid" num="12" order="listorder ASC"}
+	{loop $data $v}
+	<li><a href="{$v[url]}">{$v[catname]}</a></li>
+	{if $v[arrchildid]==61}
+		{pc:content action="lists" catid="61" order="listorder ASC"}
+		{loop $data $r}		
+		<li><a href="{$r[url]}">{$r[title]}</a></li>		
+		{/loop}
+		{/pc}
+	{/if}
+	{/loop}{/pc}
+	</ol>
+    </li>
+	{php $i++}
+	{/loop}{/pc}
+  </ul>
+</div>

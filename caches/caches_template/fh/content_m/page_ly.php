@@ -1,0 +1,54 @@
+<?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><?php include template("content_m","header"); ?>
+<body>
+	<article class='main'>
+		<section class='top-bg lau-top'>
+			<h2><?php echo $catname;?></h2>
+			<p><?php echo $catdir;?></p>
+		</section>
+		<article class='lau'>
+			<p class='tip'>找律师<span>？</span>有疑问<span>？</span>24小时客服在线答疑</p>
+			<form onsubmit='return messcheck()' method="post" action="?m=formguide&amp;c=index&amp;a=show&amp;formid=12&amp;siteid=1" name="myform" id="myform">
+				<section>
+					<label>您的名字 | NAME：	</label>
+					<input type='text' class='text'  name="info[name]" id="name"/>
+				</section>
+				<section>
+					<label>您的邮箱 | EMAIL：</label>
+					<input type='email' class='text' name="info[email]" id="email"/>
+				</section>
+				<section>
+					<label>手机号码 | MOBILE：</label>
+					<input type='text' class='text' name="info[mobile]" id="mobile"/>
+				</section>
+				<section>
+					<label>咨询内容 | MESSAGE：</label>
+					<textarea name="info[content]" id="content"></textarea>
+				</section>
+				<input type='submit' value='咨询一下' name='dosubmit' class='submit'/>
+			</form>
+			<!--<section class='cj'>
+				<p>常见问题</p>
+				<ul>
+					<li>
+						<span class='q'>问题：请问如何请律师？</span>
+						<span class='s'>答：华芳律师事务所华芳律师事务所华芳律师事务所。</span>
+						<span class='q'>问题：请问如何请律师？</span>
+						<span class='s'>答：华芳律师事务所华芳律师事务所华芳律师事务所。</span>
+						<span class='q'>问题：请问如何请律师？</span>
+						<span class='s'>答：华芳律师事务所华芳律师事务所华芳律师事务所。</span>
+						<span class='q'>问题：请问如何请律师？</span>
+						<span class='s'>答：华芳律师事务所华芳律师事务所华芳律师事务所。</span>
+						<span class='q'>问题：请问如何请律师？</span>
+						<span class='s'>答：华芳律师事务所华芳律师事务所华芳律师事务所。</span>
+					</li>
+				</ul>
+				
+				
+			</section>-->
+		</article>
+
+		
+	</article>
+<?php include template("content_m","footer"); ?>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/list.js"></script>						

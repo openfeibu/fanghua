@@ -1,0 +1,44 @@
+{template "content_m","header"}
+<body>
+	<section class='main'>
+		{if $catid==33}
+		<section class='top-bg'>
+			<h2>{$CATEGORYS[$parentid][catname]}</h2>
+			<p>{$CATEGORYS[$parentid][catdir]}</p>
+		</section>
+		<article class='field'>
+			<ul>
+				{pc:content action="category" catid="$parentid" siteid="$siteid" order="listorder ASC"}
+				{loop $data $r}	
+				<?php $url=str_replace("www","m",$r[url]); ?>
+				{if $r[catid]!=33}	
+				<li><a href="{$url}">{$r[catname]}</a></li>
+				{/if}
+				{/loop}
+				{/pc}
+				
+				<div class='clear'></div>
+				
+			</ul>
+			
+		</article>
+		{else}
+		<section class='top-bg'>
+			<h2>{$catname}</h2>
+			<p>{$catdir}</p>
+		</section>
+		<article class='xq'>
+			<h2>{$title}</h2>
+			
+			<p></p>
+			<section class='test'>
+				{$content}
+			</section>
+		</article>	
+		{/if}
+	</section>
+{template "content_m","footer"}
+	
+	
+
+						

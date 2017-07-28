@@ -1,0 +1,29 @@
+{template "content","header"}
+<div id="banner">
+  <h1 class="b{$CATEGORYS[$CAT[parentid]][catdir]}">{$CATEGORYS[$CAT[parentid]][catname]}</h1>
+</div>
+<div id="main">
+  	{template "content","left"} 	
+    <ol class="team">
+	    {if $catid==62}
+	    {pc:content action="category" catid="$parentid" siteid="$siteid" order="listorder ASC"}
+		{loop $data $k $v}
+		{pc:content action="lists" catid="$v[catid]" order="id DESC" page="$page" moreinfo="1" num="12"}
+		{loop $data $n $r}
+		<li><a href="{$r['url']}"><img src="{$r[thumb]}" alt="{$r['title']}"/><span>{$r['title']}</span></a></li>			
+		{/loop}
+		{/pc}
+		{/loop}
+		{/pc}
+	    {else}
+	    {pc:content action="lists" catid="$catid" order="id DESC" page="$page" moreinfo="1" num="12"}
+		{loop $data $n $r}
+		
+		<li><a href="{$r['url']}"><img src="{$r[thumb]}" alt="{$r['title']}"/><span>{$r['title']}1</span></a></li>
+		{/loop}{/pc}
+		{/if}
+    </ol>
+    <div class="pagenav">{$pages}</div>
+  </div>
+</div>
+{template "content","footer"}
